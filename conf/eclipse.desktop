@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=eclise
+Exec=/usr/bin/eclipse
+Icon=/usr/lib/eclipse/icon.xpm
+Terminal=false
+Type=Application
+StartupNotify=false
+Name[zh_CN]=eclipse

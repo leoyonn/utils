@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+source /etc/profile
+ps ax | grep "kafka\.Kafka.*/opt/soft/kafka/${cluster_id}.${broker_id}/config/server.properties" | grep -v grep | awk '{print $$1}' | xargs kill -SIGTERM

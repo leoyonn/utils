@@ -1,0 +1,18 @@
+cluster_id: xmpush-sd1
+zookeeper: 192.168.1.11:2181,192.168.1.10:2181,192.168.1.9:2181,192.168.1.105:2181,192.168.1.104:2181
+user: root 
+brokers: 
+  - 
+    id: 1
+    host: sd-im-kafka00.bj
+    port: 9091
+  - 
+    id: 2
+    host: sd-im-kafka01.bj
+    port: 9092
+  - 
+    id: 3
+    host: sd-im-kafka02.bj
+    port: 9093
+  
+

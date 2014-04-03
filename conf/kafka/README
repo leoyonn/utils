@@ -1,0 +1,2 @@
+use xmpush/scripts/deploy-kafka.sh conf/kafka/CONFIG.yaml to deploy kafka
+

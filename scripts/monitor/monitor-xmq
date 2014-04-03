@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Author: chenqiliang@xiaomi.com
+# NOTE: log file format
+#  Save to logfile in /data/soft/monitor/os-YYYY-MM-DD@HOSTNAME
+
+#[Monitor] >>: YYYY-MM-DD HH:MI:SS  ## Start a monitor
+#>>>> SECTION_NAME                 ## 4 ">" means start of section
+#SECTION DATA
+#<<<< SECTION_NAME                 ## 4 "<" means end of section
+# <empty line for seperation>      ## Optional
+# ...                              ## Other sections
+#[Monitor] <<: YYYY-MM-DD HH:MI:SS  ## End of a monitor
+
+datestr=`date +"%Y-%m-%d"`
+host=`hostname`
+filename=/data/soft/monitor/xmq-$datestr@$host
+datetimestr=`date +"%Y-%m-%d %H:%M:%S"`
+echo "[Monitor] >>:$datetimestr"  >> $filename
+
+CTL_FILES=`find /opt/soft/ -name 'xiaomimqctl' |grep '/xiaomi/sbin/'| grep -v sns |grep -v back |sort `
+for CTL_FILE in $CTL_FILES
+do
+	echo "## checking xmq $CTL_FILE $datetimestr" >> $filename
+	echo ">>>> top N message_queue_len" >> $filename
+	$CTL_FILE ptop message_queue_len 100 >> $filename
+	echo "<<<< message_queue_len $datetimestr" >> $filename
+    echo "" >> $filename
+
+	echo ">>>> top N memory" >> $filename
+	$CTL_FILE ptop memory 100 >> $filename
+	echo "<<<< memory $datetimestr" >> $filename
+    echo "" >> $filename
+
+	echo ">>>> top N reductions" >> $filename
+	$CTL_FILE ptop red 100 >> $filename
+	echo "<<<< reductions $datetimestr" >> $filename
+    echo "" >> $filename
+
+	echo ">>>> top N heap" >> $filename
+	$CTL_FILE ptop heap 100 >> $filename
+	echo "<<<< heap $datetimestr" >> $filename
+    echo "" >> $filename
+
+	echo ">>>> XmqCount $datetimestr" >> $filename
+	$CTL_FILE  count_queues -c 1 >> $filename
+	echo "<<<< XmqCount $datetimestr" >> $filename
+
+	echo ">>>> XmqClusterStatus $datetimestr" >> $filename
+	$CTL_FILE cluster_status >> $filename
+	echo "<<<< XmqClusterStatus $datetimestr" >> $filename
+done
+echo "" >> $filename
+
+echo "[Monitor] <<:" `date +"%Y-%m-%d %H:%M:%S"`  >> $filename
+echo "" >> $filename

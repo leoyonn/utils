@@ -1,0 +1,119 @@
+ack: {
+  type:    thrift,
+  dir:     ./ack,
+  target:  ./target,
+  thrift_name:   XmPushAckMessageService
+}
+
+command: {
+  type:    thrift,
+  dir:     ./command,
+  target:  ./target,
+  thrift_name:   XmPushCommandService
+}
+
+fetcher: {
+  type:    thrift,
+  dir:     ./fetcher,
+  target:  ./target,
+  thrift_name:   XmPushFetchMessageService
+}
+
+registration: {
+  type:    thrift,
+  dir:     ./registration,
+  target:  ./target,
+  thrift_name:   XmPushRegistrationService
+}
+
+job-dispatcher: {
+  type:    thrift,
+  dir:     ./job-dispatcher,
+  target:  ./target,
+  thrift_name:   XmPushJobDispatcherService
+}
+
+presence: {
+  type:    thrift,
+  dir:     ./presence,
+  target:  ./target,
+  thrift_name:   XmPushPresenceService
+}
+
+subscription: {
+  type:    thrift,
+  dir:     ./subscription,
+  target:  ./target,
+  thrift_name:   XmPushSubscriptionService
+}
+
+broadcast-job-dispatcher: {
+  type:    thrift,
+  dir:     ./broadcast-job-dispatcher,
+  target:  ./target,
+  thrift_name:   XmPushBroadcastJobDispatcherService
+}
+
+alias-job-dispatcher: {
+  type:    thrift,
+  dir:     ./alias-job-dispatcher,
+  target:  ./target,
+  thrift_name:   XmPushAliasJobDispatcherService
+}
+
+dashdrive: {
+  type:    thrift,
+  dir:     ./dashdrive,
+  target:  ./target,
+  thrift_name:   XmPushDashdriveService
+}
+
+notify-handler: {
+  type:    thrift,
+  dir:     ./notify-handler,
+  target:  ./target,
+  thrift_name:   XmPushNotifyHandlerService
+}
+
+test: {
+  type:    thrift,
+  dir:     ./test,
+  target:  ./target,
+  thrift_name:   XmPushTestService
+}
+
+xmpush-frontend: {
+  type:    resin,
+  dir:     ../xmpush-frontend,
+  target:  ./target/xmpush-frontend-0.0.2-SNAPSHOT,
+  thrift_name:   XmPushFrontend
+}
+
+msg-quota: {
+  type:    thrift,
+  dir:     ./msg-quota,
+  target:  ./target,
+  thrift_name:   XmPushMessageQuotaService
+}
+
+simulator: {
+  type:    thrift,
+  dir:     ./simulator,
+  target:  ./target,
+  thrift_name:   XmPushSimulator
+}
+
+perfcounter-import: {
+  type:    thrift,
+  dir:     ./perfcounter-import,
+  target:  ./target,
+  thrift_name: XmPushPerfcounterImportService  
+}      
+
+pqueue-pump: {
+  type:    thrift,
+  dir:     ./pqueue-pump,
+  target:  ./target,
+  thrift_name:   XmPushPqueueService
+}
+

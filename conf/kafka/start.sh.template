@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+id=${cluster_id}.${broker_id}
+echo starting kafka broker $${id}... 
+source /etc/profile
+
+export JMX_PORT=${jmx_port}; 
+nohup /opt/soft/kafka/$${id}/bin/kafka-server-start.sh /opt/soft/kafka/$${id}/config/server.properties > /data/soft/kafka/$${id}/logs/nohup.out &
+
+echo started kafka broker $${id}!
